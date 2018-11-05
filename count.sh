@@ -38,7 +38,7 @@ function PRINT_STATUS {
 	bar=$(( (${COLUMNS:-$(tput cols)}-43)*i/counter ))
 	space=$(( (${COLUMNS:-$(tput cols)}-43) - bar))
 	printf "\r\e[1;37m=== \e[0;37m%02d:%02d:%02d/%02d:%02d:%02d \e[1;37m===[" "$h" "$m" "$s" "$hour" "$min" "$sec"
-	printf "%0.s*" $(seq 1 $bar)
+	[[ "$bar" -gt 0 ]] && printf "%0.s*" $(seq 1 $bar)
 	printf "%*s" $space
 	printf "]=== %s ===" "$(date +%H:%M:%S)"
 }
